@@ -21,7 +21,7 @@ const PORT =process.env.PORT ||6100 ;
 connectDB();
 
 const corsOptions = {
-  origin: 'https://affinity-chat.onrender.com', // Replace with your frontend URL
+  origin: 'http://localhost:3000', // Replace with your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true, // Allow credentials (cookies)
@@ -75,7 +75,7 @@ const server = app.listen(
 const io = require('socket.io')(server, {
   pingTimeout: 60000, //closes connection when it stays ideal for 60sec/1min
   cors: {
-    origin: 'https://affinity-chat.onrender.com'
+    origin: 'http://localhost:3000'
   },
 });
 
