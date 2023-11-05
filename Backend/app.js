@@ -75,7 +75,7 @@ const server = app.listen(
 const io = require('socket.io')(server, {
   pingTimeout: 60000, //closes connection when it stays ideal for 60sec/1min
   cors: {
-    origin: 'http://localhost:3000'
+    origin: 'https://affinity-chat.onrender.com'
   },
 });
 
