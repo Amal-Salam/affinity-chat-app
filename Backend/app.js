@@ -1,6 +1,6 @@
 require('dotenv').config({ debug: true });
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
 
 // database config link
 const connectDB = require('./config/dbconfig');
@@ -11,30 +11,30 @@ const chatRouter = require(`./routes/chatRoutes`);
 const messageRouter = require(`./routes/messageRoutes`);
 
 const {notFound, errorHandler} = require('./middlewares/errorMiddleware');
-
+const path = require('path');
 
 const app=express();
 
-const PORT =process.env.PORT ||6100 ;
+const PORT =process.env.PORT;
 
 // database connection
 connectDB();
 
-const corsOptions = {
-  origin: 'https://affinity-chat.onrender.com', // Replace with your frontend URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type','Content-type','Authorization'],
-  credentials: true, // Allow credentials (cookies)
-};
+// const corsOptions = {
+//   origin: 'https://affinity-chat.onrender.com', // Replace with your frontend URL
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   allowedHeaders: ['Content-Type','Content-type','Authorization'],
+//   credentials: true, // Allow credentials (cookies)
+// };
 
 //middleware
 app.use(express.json());
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 //test route
-app.get('/',(req,res) => {
-    res.json({message:'This is to test '})
-})
+// app.get('/',(req,res) => {
+//     res.json({message:'This is to test '})
+// })
 
 //Mounting the routes
 app.use('/api/auth',authRouter);
@@ -42,9 +42,6 @@ app.use('/api/chat',chatRouter);
 app.use('/api/message',messageRouter);
 
 // ----for Deployment----
-// const __dirname = path.resolve();
-
-const path = require('path');
 const __dirname1 = path.resolve();
 
 if (process.env.NODE_ENV === 'production') {
@@ -63,12 +60,12 @@ if (process.env.NODE_ENV === 'production') {
 app.use(notFound);
 app.use(errorHandler);
 
-app.listen(PORT, () => {
- console.log(`Server is listening on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//  console.log(`Server is listening on port ${PORT}`);
+// });
 
 const server = app.listen(
-  5000,
+  PORT,
   console.log(`Server started on PORT ${PORT}`)
 );
 
