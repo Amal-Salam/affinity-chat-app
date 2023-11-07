@@ -21,9 +21,9 @@ const PORT =process.env.PORT ||6100 ;
 connectDB();
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // Replace with your frontend URL
+  origin: 'https://affinity-chat.onrender.com', // Replace with your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type','Content-type','Authorization'],
   credentials: true, // Allow credentials (cookies)
 };
 
